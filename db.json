@@ -1,0 +1,53 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "name": "Admin",
+      "email": "admin@admin.com",
+      "password": "admin123",
+      "role": "admin"
+    },
+    {
+      "name": "customer",
+      "email": "customer@mail.com",
+      "phone": "3216549870",
+      "enrollNumber": "202500000001",
+      "password": "cus123",
+      "role": "customer",
+      "id": "2"
+    },
+    {
+      "id": "5bab",
+      "name": "davi",
+      "email": "davidalejandrozapata2@gmail.com",
+      "password": "123",
+      "role": "customer"
+    }
+  ],
+  "events": [
+    {
+      "id": "1",
+      "title": "Travieso escot",
+      "description": "First event of travieso escot in colombia",
+      "eventDate": "10-Jul-2025",
+      "availability": 8
+    }
+  ],
+  "enrollments": [
+    {
+      "id": "d6a6",
+      "userId": "2",
+      "eventoId": "1"
+    },
+    {
+      "id": "2ccb",
+      "userId": "2",
+      "eventoId": "3247"
+    },
+    {
+      "id": "24bb",
+      "userId": "2",
+      "eventoId": "3247"
+    }
+  ]
+}
