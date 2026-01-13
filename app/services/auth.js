@@ -7,7 +7,12 @@ export function setLoggedUser(user) {
 
 // Get session
 export function getLoggedUser() {
-  return JSON.parse(localStorage.getItem(USER_KEY));
+  try {
+    return JSON.parse(localStorage.getItem(USER_KEY));
+  } catch {
+    logoutUser();
+    return null;
+  }
 }
 
 // Sign out
@@ -17,7 +22,7 @@ export function logoutUser() {
 
 // Check if there is an active user
 export function isLoggedIn() {
-  return !!localStorage.getItem(USER_KEY);
+  return !!getLoggedUser();
 }
 
 // Check if it is admin
@@ -26,21 +31,12 @@ export function isAdmin() {
   return user?.role === "admin";
 }
 
-
-export function useAuthGuard(route, navigate) {
+// Simple route guard
+export function useAuthGuard(route) {
   const user = getLoggedUser();
 
-  if (!user) {
-    // NThere is no session → return to login
-    navigate("/");
-    return;
-  }
+  if (!user) return false;
+  if (route === "/admin" && user.role !== "admin") return false;
 
-  if (route === "/admin" && user.role !== "admin") {
-    // It's not admin → we send it to public view
-    navigate("/public");
-    return;
-  }
-
-  // If everything is fine, it does nothing and lets the page load
+  return true;
 }

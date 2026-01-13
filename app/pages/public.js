@@ -1,6 +1,6 @@
 import { get, post, update } from "../services/api.js";
 import { getLoggedUser } from "../services/auth.js";
-import { navigate } from "../../main.js";
+import { navigate } from "../router/router.js";
 
 export async function setupPublic() {
   const user = getLoggedUser();
